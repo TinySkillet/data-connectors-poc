@@ -1,5 +1,3 @@
-# postgres_to_milvus.py
-
 import dlt
 import os
 from dlt.sources.sql_database import sql_table
