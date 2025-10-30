@@ -1,0 +1,13 @@
+[project]
+name = "postgres-milvus-pipeline"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "dlt[postgres]>=1.18.0",
+    "dotenv>=0.9.9",
+    "fastembed>=0.7.3",
+    "pymilvus>=2.6.2",
+    "sqlalchemy>=2.0.44",
+]
