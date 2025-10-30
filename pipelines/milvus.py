@@ -40,6 +40,18 @@ class MilvusStore:
         if not data:
             return 0
 
+        # Extract all source_ids
+        source_ids = [d["source_id"] for d in data if "source_id" in d]
+
+        # Delete existing vectors with same source_ids only if there are any
+        if source_ids:
+            expr = f"source_id in [{','.join(str(sid) for sid in source_ids)}]"
+            del_res = self.client.delete(collection_name, expr=expr)
+            print(f"Deleted records with source_ids: {source_ids}")
+        else:
+            print("No source_ids to delete, skipping delete step.")
+
+        # Insert new/updated vectors
         res = self.client.insert(collection_name=collection_name, data=data)
         self.client.flush(collection_name=collection_name)
         print(f"Inserted {res['insert_count']} records. PKs: {res['ids'][:5]}...")

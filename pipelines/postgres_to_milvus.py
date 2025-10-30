@@ -84,7 +84,8 @@ def milvus_destination(items: TDataItems, table: TTableSchema):
 def load_table_products():
     """Defines and runs the dlt pipeline from a PostgreSQL table to Milvus."""
     print("Starting postgres_to_milvus pipeline with fastembed...")
-    source = sql_table(table="products")
+    # Enable CDC by extracting only new/changed records using 'updated_at' incremental column
+    source = sql_table(table="products", incremental="updated_at")
     pipeline = dlt.pipeline(
         pipeline_name="postgres_to_milvus_fastembed_pipeline",
         destination=milvus_destination,
