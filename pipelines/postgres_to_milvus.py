@@ -66,7 +66,6 @@ def milvus_destination(items: TDataItems, table: TTableSchema):
     embeddings_numpy = model.embed(texts_to_embed)
     embeddings = [arr.tolist() for arr in embeddings_numpy]
 
-    # Prepare records for Milvus insertion
     records_to_load = []
     for i, item in enumerate(items):
         record = {
@@ -81,7 +80,6 @@ def milvus_destination(items: TDataItems, table: TTableSchema):
 
 def load_table_products():
     """Defines and runs the dlt pipeline from a PostgreSQL table to Milvus."""
-    print("Starting postgres_to_milvus pipeline with fastembed...")
     source = sql_table(table="products")
     pipeline = dlt.pipeline(
         pipeline_name="postgres_to_milvus_fastembed_pipeline",
