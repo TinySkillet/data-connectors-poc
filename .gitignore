@@ -14,3 +14,4 @@ wheels/
 embedEtcd.yaml
 volumes/
 wtf.jsonl
+.env
