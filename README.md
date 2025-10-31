@@ -69,7 +69,7 @@ MILVUS_DB_NAME=default" > .env
 
 ### Verifying data in Milvus
 
-We can run a quick check by running test_milvus_data.py in tests directory:
+We can run a quick check by running `test_milvus_data.py` in tests directory:
 
 ```bash
 uv run tests/test_milvus_data.py
