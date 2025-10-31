@@ -51,6 +51,3 @@ def run_query(source_name: str, payload: SQLQuery):
             return {"rows": rows}
         except Exception as e:
             raise HTTPException(status_code=400, detail=f"Query error: {str(e)}")
-
-
-# You can now run this FastAPI app with: uvicorn main:app --reload
