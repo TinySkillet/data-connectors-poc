@@ -69,19 +69,10 @@ MILVUS_DB_NAME=default" > .env
 
 ### Verifying data in Milvus
 
-We can run a quick check using `pymilvus`:
+We can run a quick check by running test_milvus_data.py in tests directory:
 
 ```bash
-uv run python - <<'PY'
-from pymilvus import MilvusClient
-
-client = MilvusClient(uri="http://localhost:19530", db_name="default")
-col = "product_embeddings_fastembed"
-print("Has collection?", client.has_collection(col))
-if client.has_collection(col):
-    stats = client.get_collection_stats(col)
-    print("Collection stats:", stats)
-PY
+uv run tests/test_milvus_data.py
 ```
 
 ### Postgres seed data
